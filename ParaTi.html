@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Invitación al Cine</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #1f1c2c, #928dab);
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: white;
+}
+
+.container {
+    background: rgba(0,0,0,0.65);
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    width: 360px;
+    position: relative;
+}
+
+h1 {
+    margin-bottom: 30px;
+}
+
+button {
+    padding: 12px 25px;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+.si {
+    background: #4CAF50;
+    color: white;
+}
+
+.no {
+    background: #f44336;
+    color: white;
+    position: absolute;
+}
+
+.boleta {
+    display: none;
+    background: white;
+    color: black;
+    margin-top: 30px;
+    padding: 20px;
+    border-radius: 12px;
+    animation: aparecer 1s ease;
+}
+
+@keyframes aparecer {
+    from { opacity: 0; transform: scale(0.7); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* ZOOTOPIA */
+.zootopia {
+    position: absolute;
+    font-size: 50px;
+    animation: rebotar 2s infinite ease-in-out;
+}
+
+.judy {
+    left: 20px;
+    bottom: 20px;
+}
+
+.nick {
+    right: 20px;
+    top: 20px;
+    animation-delay: 1s;
+}
+
+@keyframes rebotar {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Música -->
+<audio autoplay loop>
+    <source src="eres.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Personajes -->
+<div class="zootopia judy">🐰</div>
+<div class="zootopia nick">🦊</div>
+
+<div class="container">
+    <h1>Flaca, ¿quieres ir a cine conmigo? 🎥🍿</h1>
+
+    <button class="si" onclick="aceptar()">Sí 💖</button>
+    <button class="no" id="btnNo">No 😅</button>
+
+    <div class="boleta" id="boleta">
+        <h2>🎟 BOLETA DE CINE</h2>
+        <p>📅 Fecha: 30 de Enero</p>
+        <p>📍 Cine: CineColombia</p>
+        <p>💘 Acompañante: Tú</p>
+    </div>
+</div>
+
+<script>
+const btnNo = document.getElementById("btnNo");
+
+btnNo.addEventListener("mouseover", () => {
+    const x = Math.random() * 250;
+    const y = Math.random() * 150;
+    btnNo.style.left = x + "px";
+    btnNo.style.top = y + "px";
+});
+
+function aceptar() {
+    document.getElementById("boleta").style.display = "block";
+    btnNo.style.display = "none";
+}
+</script>
+
+</body>
+</html>
